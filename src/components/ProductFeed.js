@@ -5,7 +5,7 @@ const ProductFeed = ({ products }) => {
 		<div className="grid grid-flow-row-dense md:grid-cols-3 ls:grid-cols-4 md:-ml-52 mx-auto">
 			{products
 				.slice(0, 4)
-				.map((id, title, price, description, category, image) => (
+				.map(({ id, title, description, category, image, price }) => (
 					<Product
 						key={id}
 						id={id}
@@ -24,30 +24,48 @@ const ProductFeed = ({ products }) => {
 			<div className="md:col-span-2">
 				{products
 					.slice(4, 5)
-					.map((id, title, price, description, category, image) => (
-						<Product
-							key={id}
-							id={id}
-							title={title}
-							price={price}
-							description={description}
-							category={category}
-							image={image}
-						/>
-					))}
+					.map(
+						({
+							id,
+							title,
+							description,
+							category,
+							image,
+							price,
+						}) => (
+							<Product
+								key={id}
+								id={id}
+								title={title}
+								price={price}
+								description={description}
+								category={category}
+								image={image}
+							/>
+						)
+					)}
 				{products
 					.slice(5, products.length)
-					.map((id, title, price, description, category, image) => (
-						<Product
-							key={id}
-							id={id}
-							title={title}
-							price={price}
-							description={description}
-							category={category}
-							image={image}
-						/>
-					))}
+					.map(
+						({
+							id,
+							title,
+							description,
+							category,
+							image,
+							price,
+						}) => (
+							<Product
+								key={id}
+								id={id}
+								title={title}
+								price={price}
+								description={description}
+								category={category}
+								image={image}
+							/>
+						)
+					)}
 			</div>
 		</div>
 	);

@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/solid";
-import Image from "next/image";
 import Currency from "react-currency-formatter";
 
 const MAX_RATING = 5;
@@ -12,12 +12,13 @@ const Product = ({ id, title, description, category, image, price }) => {
 	);
 	const [hasPrime] = useState(Math.random() < 0.5);
 	return (
-		<div className="relative flex flex-col m-5 bg-white z-30 p-10" key={id}>
+		<div className="relative flex flex-col m-5 bg-white z-30 p-10">
 			<p className="absolute top-2 right-2 text-sm italic text-gray-400">
 				{category}
 			</p>
 
 			<Image src={image} height={200} width={200} objectFit="contain" />
+
 			<h4 className="my-3">{title}</h4>
 
 			<div className="flex">

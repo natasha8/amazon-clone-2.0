@@ -18,8 +18,10 @@ export default function Home({ products }) {
 	);
 }
 export async function getServerSideProps(context) {
-	const products = await fetch("https://fakestoreapi.com/products")
-		.then((res) => res.json())
-		.then((json) => console.log(json));
+	const products = await fetch(
+		"https://fakestoreapi.com/products?limit=15"
+	).then((res) => res.json());
+	// console.log(products);
+
 	return { props: { products } };
 }

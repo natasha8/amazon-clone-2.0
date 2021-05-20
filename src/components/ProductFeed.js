@@ -2,7 +2,7 @@ import Product from "./Product";
 
 const ProductFeed = ({ products }) => {
 	return (
-		<div className="grid grid-flow-row-dense md:grid-cols-3 ls:grid-cols-4 md:-ml-52 mx-auto">
+		<div className="grid grid-flow-row-dense md:grid-col-2 lg:grid-col-3 ls:grid-col-4 md:-ml-52 mx-auto">
 			{products
 				.slice(0, 4)
 				.map(({ id, title, description, category, image, price }) => (

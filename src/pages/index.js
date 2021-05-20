@@ -12,14 +12,14 @@ export default function Home({ products }) {
 			<Header />
 			<main className="max-w-screen-2xl mx-auto">
 				<Banner />
-				<ProductFeed />
+				<ProductFeed products={products} />
 			</main>
 		</div>
 	);
 }
 export async function getServerSideProps(context) {
-	const product = await fetch("https://fakestoreapi.com/products").then(
-		(res) => res.json()
-	);
+	const products = await fetch("https://fakestoreapi.com/products")
+		.then((res) => res.json())
+		.then((json) => console.log(json));
 	return { props: { products } };
 }

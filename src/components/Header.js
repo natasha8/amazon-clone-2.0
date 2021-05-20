@@ -16,19 +16,19 @@ const Header = () => {
 						width={150}
 						height={40}
 						objectFit="contain"
-						className="link"
+						className="cursor-pointer"
 					/>
 				</div>
 				<div className="hidden sm:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500">
 					<input
-						className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md"
+						className="p-2 h-full w-6 flex-grow flex-shrink rounded-l-md focus:outline-none px-4"
 						type="text"
 					/>
 					<SearchIcon className="h-12 p-4 " />
 				</div>
-				<div className="text-white flex items-center text-xs space-x-6 mx-6 white-nowrap">
+				<div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
 					<div className="link">Hello Natasha</div>
-					<div className="link">Account & list</div>
+					<div className="link">Account & Lists</div>
 					<div className="link">
 						<p className="font-extra-bold md:text-sm">Return</p>
 						<p>& Orders</p>
@@ -50,12 +50,16 @@ const Header = () => {
 					All
 				</p>
 				<p className="link">Prime Video</p>
-				<p className="link">Amazon </p>
-				<p className="link">Prime Video</p>
-				<p className="link hidden lg:inline-flex">Prime Video</p>
-				<p className="link hidden lg:inline-flex">Prime Video</p>
-				<p className="link hidden lg:inline-flex">Prime Video</p>
-				<p className="link hidden lg:inline-flex">Prime Video</p>
+				<p className="link">Amazon Business</p>
+				<p className="link">Today's Deals</p>
+				<p className="link hidden lg:inline-flex">Prime</p>
+				<p className="link hidden lg:inline-flex">Food & Grocery</p>
+				<p className="link hidden lg:inline-flex">Buy Again</p>
+				<p className="link hidden lg:inline-flex">Electronics</p>
+				<p className="link hidden lg:inline-flex">
+					Health & Personal Care
+				</p>
+				<p className="link hidden lg:inline-flex">Shopper Toolkit</p>
 			</div>
 		</header>
 	);

@@ -1,9 +1,8 @@
-import React from "react";
 import Product from "./Product";
 
 const ProductFeed = ({ products }) => {
 	return (
-		<div className="grid grid-flow-row-dense md:grid-cols-3 ls:grid-cols-4 md:-ml-52">
+		<div className="grid grid-flow-row-dense md:grid-cols-3 ls:grid-cols-4 md:-ml-52 mx-auto">
 			{products
 				.slice(0, 4)
 				.map((id, title, price, description, category, image) => (

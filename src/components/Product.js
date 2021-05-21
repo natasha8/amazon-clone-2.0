@@ -12,7 +12,7 @@ const Product = ({ id, title, description, category, image, price }) => {
 	);
 	const [hasPrime] = useState(Math.random() < 0.5);
 	return (
-		<div className="relative flex flex-col m-5 bg-black z-30 p-20 ">
+		<div className="relative flex flex-col m-5 bg-white z-30 p-20 ">
 			<p className="absolute top-2 right-2 text-xs italic text-gray-400">
 				{category}
 			</p>

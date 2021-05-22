@@ -35,9 +35,11 @@ const Header = () => {
 					<SearchIcon className="h-5 p-4 " />
 				</div>
 				<div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-					<div onClick={session ? signIn : signOut} className="link">
-						{" "}
-						<p className="font-extrabold md:text-sm">
+					<div
+						onClick={session ? signIn : signOut}
+						className="cursor-pointer link"
+					>
+						<p className="hover:underline font-extrabold md:text-sm">
 							{session
 								? `Hello, ${session.user.name}`
 								: "Sign In"}

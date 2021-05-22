@@ -36,10 +36,10 @@ const Header = () => {
 				</div>
 				<div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
 					<div
-						onClick={session ? signIn : signOut}
+						onClick={!session ? signIn : signOut}
 						className="cursor-pointer link"
 					>
-						<p className="hover:underline font-extrabold md:text-sm">
+						<p className="hover:underline ">
 							{session
 								? `Hello, ${session.user.name}`
 								: "Sign In"}

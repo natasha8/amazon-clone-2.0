@@ -13,7 +13,10 @@ const app = !admin.apps.length
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
+//firebase
 const fullFillOrder = async (session) => {
+	console.log("fullFillOrder", session);
+
 	return app
 		.firestore()
 		.collection("users")
@@ -24,13 +27,14 @@ const fullFillOrder = async (session) => {
 			amount: session.amount_total / 100,
 			amount_shipping: session.total_details.amount_shipping / 100,
 			images: JSON.parse(session.metadata.images),
-			timestamp: admin.firestore.FieldPath.serverTimestamp(),
+			timestamp: admin.firestore.FieldValue.serverTimestamp(),
 		})
 		.then(() => {
 			console.log(
 				`SUCCESS: Order ${session.id} has been added to the database`
 			);
-		});
+		})
+		.catch((error) => console.log("ERROR ADDING ITEMS TO FIREBASE", error));
 };
 
 export default async (req, res) => {
@@ -39,16 +43,18 @@ export default async (req, res) => {
 		const payload = requestBuffer.toString();
 		const sig = req.headers["stripe-signature"];
 		let event;
-
+		//verify came from stripe
 		try {
 			event = stripe.webhook.constructEvent(payload, sig, endpointSecret);
 		} catch (err) {
-			console.error(err);
+			console.error("stripe verify err", err);
 			return res.status(400).send(`Webhook error: ${err.message}`);
 		}
 
 		if (event.type === "checkout.session.completed") {
 			const session = event.data.object;
+
+			//FullFill firebase
 			return fullFillOrder(session)
 				.then(() => res.status(200))
 				.catch((err) =>

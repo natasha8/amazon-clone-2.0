@@ -1,7 +1,7 @@
 import moment from "moment";
 import Head from "next/head";
 import { getSession, useSession } from "next-auth/client";
-import { db } from "../../firebase";
+import db from "../../firebase";
 import Header from "../components/Header";
 import Order from "../components/Order";
 import { useRouter } from "next/router";

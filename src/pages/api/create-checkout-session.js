@@ -20,7 +20,7 @@ export default async (req, res) => {
 		payment_method_types: ["card"],
 		shipping_rates: ["shr_1ItxJCLqRxHxjGMqV82hkEHr"],
 		shipping_address_collection: {
-			allowed_countries: ["GB", "US"],
+			allowed_countries: ["GB", "US", "IT", "DE", "FR"],
 		},
 		line_items: transformedItems,
 		mode: "payment",
@@ -31,5 +31,6 @@ export default async (req, res) => {
 			images: JSON.stringify(items.map((item) => item.image)),
 		},
 	});
+	console.log("CHECK if there is session", session.id);
 	res.status(200).json({ id: session.id });
 };

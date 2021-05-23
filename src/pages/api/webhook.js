@@ -15,7 +15,11 @@ const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 //firebase
 const fullFillOrder = async (session) => {
-	console.log("fullFillOrder", session);
+	console.log("FIREBASE fullFillOrder: ", session);
+
+	const images = JSON.parse(session.metadata.images).map((image) =>
+		JSON.stringify(image)
+	);
 
 	return app
 		.firestore()
@@ -26,7 +30,7 @@ const fullFillOrder = async (session) => {
 		.set({
 			amount: session.amount_total / 100,
 			amount_shipping: session.total_details.amount_shipping / 100,
-			images: JSON.parse(session.metadata.images),
+			images: images,
 			timestamp: admin.firestore.FieldValue.serverTimestamp(),
 		})
 		.then(() => {
@@ -51,7 +55,7 @@ export default async (req, res) => {
 				endpointSecret
 			);
 		} catch (err) {
-			console.error("stripe verify err", err.message);
+			console.error("STRIPE verify err", err.message);
 			return res.status(400).send(`Webhook error: ${err.message}`);
 		}
 

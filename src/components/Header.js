@@ -49,7 +49,12 @@ const Header = () => {
 
 					<div className="link">
 						<p>Return</p>
-						<p className="font-bold md:text-sm">& Orders</p>
+						<p
+							className="font-bold md:text-sm"
+							onClick={() => router.push("/orders")}
+						>
+							& Orders
+						</p>
 					</div>
 					<div className="relative link flex items-center ">
 						<span className="absolute top-0 right-0 md:right-8 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold ">
